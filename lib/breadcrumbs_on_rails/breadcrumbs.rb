@@ -86,9 +86,9 @@ module BreadcrumbsOnRails
 
       def render_element(element)
         if element.path == nil
-          content = raw("<li>#{compute_name(element)}</li>")
+          content = "<li>#{compute_name(element)}</li>".html_safe
         else
-          content = raw("<li>#{@context.link_to_unless_current(compute_name(element), compute_path(element), element.options)}</li>")
+          content = "<li>#{@context.link_to_unless_current(compute_name(element), compute_path(element), element.options)}</li>".html_safe
         end
         if @options[:tag]
           @context.content_tag(@options[:tag], content)
